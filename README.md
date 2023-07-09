@@ -1,48 +1,44 @@
+![Project Banner](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/banner.png)
+## Course Project - *Computer Networks* - **UAM**
 
-![enter image description here](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/banner.png)
-## Projekt zaliczeniowy na przedmiot - *Sieci komputerowe* - **UAM**
-
-> **Zrealizowano w trzecim semestrze studiów informatycznych.**
+> **Completed in the third semester of computer science studies.**
 
 <img align="right" src="https://raw.githubusercontent.com/Education-IT/MicroShell/main/images/Bash.png" width="200"/>
 
-Zadanie polegało na wykorzystaniu języka **C** oraz **Python** do napisania dwóch *programów **konsolowych***, komunikujących się ze sobą za pomocą **interfejsu obiektowego** i **gniazd BSD**. Aplikacja kliencka przesyła wybrany plik (dowolnej wielkości) który to zapisywany  jest na serwerze. Projekt realizowałem wspólnie z [**Szymonem Ptaszyńskim**](https://github.com/PTAKUU). Osobiście stworzyłem aplikacja kliencką w C, a mój kolega - aplikacje serwerową w Pythonie.  Transmisja połączeniowa między aplikacjami zachodzi za pomocą protokołu **`TCP`**. 
-Programy te, z założenia, możliwe są do uruchomienia jedynie na systemach  ***Unix****. Działają tylko w zakresie *lokalnej sieci komputerowej*. W trakcie pracy, osobiście korzystaliśmy z sytemu operacyjnego - **Ubuntu**.
+The task was to use the **C** and **Python** programming languages to develop two *console-based programs* that communicate with each other using an **object-oriented interface** and **BSD sockets**. The client application sends a selected file (of any size) to be saved on the server. I worked on this project together with [**Szymon Ptaszyński**](https://github.com/PTAKUU). I personally created the client application in C, while my colleague developed the server application in Python. The transmission between the applications occurs using the **TCP** protocol. These programs are intended to run only on **Unix** systems and operate within a *local computer network*. During the development, we used the **Ubuntu** operating system.
 
-![enter image description here](https://img.shields.io/badge/C-A8B9CC.svg?style=for-the-badge&logo=C&logoColor=black) ![enter image description here](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) ![enter image description here](https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=for-the-badge&logo=GNU-Bash&logoColor=white)  ![enter image description here](https://img.shields.io/badge/Linux-FCC624.svg?style=for-the-badge&logo=Linux&logoColor=black)[ ![enter image description here](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://education-it.pl/)
+![C](https://img.shields.io/badge/C-A8B9CC.svg?style=for-the-badge&logo=C&logoColor=black) ![Python](https://img.shields.io/badge/Python-3776AB.svg?style=for-the-badge&logo=Python&logoColor=white) ![Bash](https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=for-the-badge&logo=GNU-Bash&logoColor=white)  ![Linux](https://img.shields.io/badge/Linux-FCC624.svg?style=for-the-badge&logo=Linux&logoColor=black) [![Website](https://img.shields.io/badge/website-000000?style=for-the-badge&logo=About.me&logoColor=white)](https://education-it.pl/)
  ## 
-**Program "`klient.c`" :**
- 1)  Wyświetla **login** aktualnie zalogowanego użytkownika oraz **znak zachęty** w postaci `[{path}] $`, gdzie `{path}` jest ścieżką do bieżącego katalogu roboczego.
- 2) Obsługuje polecenie `cd`, działające analogicznie jak [`cd`] znane nam z powłoki bash.
- 3) Obsługuje autorskie polecenie **`transfer <nazwa_pliku>`** wysyłające plik do serwera o określonym przez użytkownika adresie **IP** oraz nasłuchiwanym **porcie**. Polecenie to obsługuje również flagę **`-two`** umożliwiającą wysłanie 2 różnych plików do 2 różnych serwerów jednocześnie. 
- 5) Obsługuje polecenie `exit`, kończące działanie programu klienckiego;
- 6) Obsługuje polecenie `help`, wyświetlające na ekranie informacje o autorach programów i oferowanych przez nich funkcjonalnościach;
- 7) Wypisuje komunikat błędu, gdy niemożliwe jest poprawne zinterpretowanie polecenia;
+**`klient.c` Program:**
+ 1) Displays the **login** of the currently logged-in user and a **prompt sign** in the format `[{path}] $`, where `{path}` is the path to the current working directory.
+ 2) Supports the `cd` command, which works similarly to the `cd` command known from the Bash shell.
+ 3) Handles the custom command **`transfer <filename>`** to send a file to the server at the specified **IP address** and **port**. The command also supports the **`-two`** flag to send two different files to two different servers simultaneously.
+ 5) Supports the `exit` command to terminate the client program.
+ 6) Supports the `help` command to display information about the authors of the programs and their functionalities.
+ 7) Displays an error message when a command cannot be interpreted correctly.
   
-  **Program "`server.py`" :**
-  1.  Nasłuchuje bez przerwy na porcie: `60000`.
-  2. Obsługuje w jednym momencie tylko jednego klienta.
-  3. Po przesłaniu przez aplikację kliencką pliku - serwer sprawdza czy w bieżącym katalogu roboczym znajduje się plik o podanej nazwie - jeśli tak, to zmienia nazwę nowego pliku, dodając odpowiednią liczbę w celu **uniknięcia nadpisania** innych ważnych dokumentów.
-  4. Po zakończeniu połączenia - ponownie rozpoczyna się proces nasłuchiwania na wskazanym porcie.
+  **`server.py` Program:**
+  1. Continuously listens on port `60000`.
+  2. Handles only one client at a time.
+  3. After receiving a file from the client application, the server checks if a file with the specified name already exists in the current working directory. If it does, the server renames the new file by appending a number to avoid overwriting other important documents.
+  4. After completing the connection, the server resumes listening on the specified port.
   
-  ##  Przykładowe działanie programów
- > Widok po skorzystaniu z polecenia `help`  (aplikacja kliencka)
-
-
-![enter image description here](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/klient-help.PNG)
+  ## Example Usage:
+ > View after using the `help` command (client application)
+  
+![Client Help](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/klient-help.PNG)
 <br>
 
-> Przykładowe wysłanie pliku do nasłuchującego serwera .
-
-
-![enter image description here](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/klient-transfer.PNG)
+> Sending a file to the listening server.
+  
+![File Transfer](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/klient-transfer.PNG)
 <br>
 
-> Widok ze strony serwera - moment nawiązania połączenia i odebrania pliku. 
+> Server view - connection establishment and file reception.
+  
+![Server](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/server.PNG)
 
-![enter image description here](https://raw.githubusercontent.com/Education-IT/Client-Server-ConsoleApps/main/images/server.PNG)
-
-## Czego się nauczyłem:
-- Utrwaliłem wiedzę dotyczącą wykorzystywania procesów potomnych - funkcje: `fork()` / `wait()`/ `waitpid()` / `exec()`. (wysyłanie dwóch różnych plików do 2 serwerów jednocześnie)
-- Projekt był idealnym podsumowaniem sposobu nawiązywania połączenia między aplikacjami za pomocą protokołu **`TCP`**. 
-- Była to moja pierwsza projektowa styczność z jednym z wielu głównych praktyk *inżynierii oprogramowania* - wykorzystywaniem już istniejącego kodu (nie tworzenia koła od nowa). Wykorzystałem szkielet mojego autorskiego programu [microshell.c](https://github.com/Education-IT/MicroShell) do pobierania od użytkownika ciągu znaków - a następnie przekształcanie go na tablicę, jak i całe polecenie `cd` umożliwiające poruszanie się po drzewie katalogów w systemie.
+## What I Learned:
+- Reinforced my knowledge of utilizing child processes, including functions such as `fork()`, `wait()`, `waitpid()`, and `exec()` (sending two different files to two servers simultaneously).
+- This project was an excellent opportunity to summarize the process of establishing connections between applications using the **TCP** protocol.
+- It was my first encounter with one of the main practices in software engineering, which involves utilizing existing code instead of starting from scratch. I reused the framework from my custom program [microshell.c](https://github.com/Education-IT/MicroShell) to receive a string from the user and convert it into an array, as well as the entire `cd` command to navigate through the directory tree in the system.
